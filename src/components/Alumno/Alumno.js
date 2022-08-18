@@ -11,6 +11,9 @@ function Alumno() {
   // boton para
   function setBtnEditar(tablaFilaAlumno) {
     setOpenFormulario(true);
+    // limpiar texto del input de filtro
+    tablaFilaAlumno.filtrar_x_carrera = ""
+    // actualizar formulario con los datos seleccionados de la tabla
     setState(tablaFilaAlumno);
   }
 
@@ -21,7 +24,6 @@ function Alumno() {
   function btnFiltrar() {
     const filtrarByCarrera = state.filtrar_x_carrera;
     console.log(typeof filtrarByCarrera, filtrarByCarrera);
-
   }
 
   // Boton para crear usuario o actualizar si existe id_alumno
@@ -79,16 +81,20 @@ function Alumno() {
             <input
               className="form-control"
               name="filtrar_x_carrera"
-              placeholder="filtrar por carrera"
+              placeholder="Filtrar por carrera"
               onChange={handleChange}
               value={state.filtrar_x_carrera}
               required
             />
-            <button className="btn btn-info text-white" onClick={btnFiltrar}>
+            <button
+              type="button"
+              className="btn btn-info text-white"
+              onClick={btnFiltrar}
+            >
               Filtrar
             </button>
           </div>
-          <button className="btn btn-success" onClick={btnNuevo}>
+          <button type="button" className="btn btn-success" onClick={btnNuevo}>
             Nuevo
           </button>
         </div>
@@ -242,7 +248,7 @@ function templateForm() {
     dni: "",
     edad: "",
     id_carrera: "",
-    filtrar_x_carrera:""
+    filtrar_x_carrera: "",
   };
 }
 
