@@ -18,6 +18,11 @@ function Alumno() {
   function btnEliminar(idAlumno) {
     console.log("Eliminar id_alumno: ", typeof idAlumno, idAlumno);
   }
+  function btnFiltrar() {
+    const filtrarByCarrera = state.filtrar_x_carrera;
+    console.log(typeof filtrarByCarrera, filtrarByCarrera);
+
+  }
 
   // Boton para crear usuario o actualizar si existe id_alumno
   function btnUpsert(event) {
@@ -57,7 +62,7 @@ function Alumno() {
 
   useEffect(() => {
     // Ver que data tengo en mi estado
-    // console.log(state);
+    console.log(state);
     setListaAlumnos(dataAlumno);
   }, [state]);
 
@@ -67,11 +72,26 @@ function Alumno() {
       <div className="text-center">
         <h2>Gestionar Alumnos</h2>
       </div>
-      <div className="d-flex justify-content-between">
+      <div>
         <h3>Listado de Alumnos</h3>
-        <button className="btn btn-success" onClick={btnNuevo}>
-          Nuevo
-        </button>
+        <div className="d-flex justify-content-between">
+          <div className="d-flex">
+            <input
+              className="form-control"
+              name="filtrar_x_carrera"
+              placeholder="filtrar por carrera"
+              onChange={handleChange}
+              value={state.filtrar_x_carrera}
+              required
+            />
+            <button className="btn btn-info text-white" onClick={btnFiltrar}>
+              Filtrar
+            </button>
+          </div>
+          <button className="btn btn-success" onClick={btnNuevo}>
+            Nuevo
+          </button>
+        </div>
       </div>
 
       <hr />
@@ -222,6 +242,7 @@ function templateForm() {
     dni: "",
     edad: "",
     id_carrera: "",
+    filtrar_x_carrera:""
   };
 }
 

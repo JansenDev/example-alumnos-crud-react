@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="container mt-3">
       <Alumno />
-      <Carrera />
+      {/* <Carrera /> */}
 
     </div>
   );
