@@ -1,8 +1,6 @@
 
-import { dataCarrera } from "../../utils/dataCarrera";
-function ListarAlumnno({ dataAlumno }) {
-  // console.log(dataAlumno);
-//   console.log(dataCarrera);
+function ListarAlumnno({ dataAlumno, setBtnEditar, btnEliminar }) {
+
   return (
     <div>
       <table className="table table-hover">
@@ -32,8 +30,18 @@ function ListarAlumnno({ dataAlumno }) {
                 <td>{alumno.edad}</td>
                 <td>{alumno.id_carrera}</td>
                 <td>
-                  <button className="btn btn-warning">Editar</button>{" "}
-                  <button className="btn btn-danger">Eliminar</button>
+                  <button
+                    onClick={() => setBtnEditar(alumno)}
+                    className="btn btn-warning"
+                  >
+                    Editar
+                  </button>{" "}
+                  <button
+                    onClick={() => btnEliminar(alumno.id_alumno)}
+                    className="btn btn-danger"
+                  >
+                    Eliminar
+                  </button>
                 </td>
               </tr>
             ))}
